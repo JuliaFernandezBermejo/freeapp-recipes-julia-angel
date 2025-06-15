@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.recipeapp.common.Recipe
-import com.example.recipeapp.databinding.ActivityFavouritesBinding
+import com.example.recipeapp.databinding.ActivitySearchBinding
 import com.example.recipeapp.favouritesActivity.FavouritesViewModel
 
 class SearchActivity : AppCompatActivity(), SearchView {
