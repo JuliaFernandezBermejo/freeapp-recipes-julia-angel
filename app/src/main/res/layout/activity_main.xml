@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="@+id/favouritesButtton" />
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/titleTextMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mari Pili's Recipes"
