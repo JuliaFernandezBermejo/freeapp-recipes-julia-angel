@@ -36,13 +36,13 @@ class FavouritesViewModel : ViewModel(){
                     view?.showError("Error loading news")
                 }
         }
-    }
+    }*/
 
     fun showFavourites() =
         view?.apply{
             //showImage(imageURL)
             //showFavourites(favourites)
-        }*/
+        }
     fun updateView(){
 
     }

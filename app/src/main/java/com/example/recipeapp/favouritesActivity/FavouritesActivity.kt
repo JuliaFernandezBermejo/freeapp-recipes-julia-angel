@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
+//import com.bumptech.glide.Glide
 import com.example.recipeapp.common.Recipe
 import com.example.recipeapp.databinding.ActivityFavouritesBinding
 
 class FavouritesActivity : AppCompatActivity(), FavouritesView {
 
-    private val newsViewModel: FavouritesViewModel by viewModels()
+    private val favouritesViewModel: FavouritesViewModel by viewModels()
     private lateinit var binding: ActivityFavouritesBinding
     var selectedFavourites: Recipe? = null
 
@@ -31,15 +31,15 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
 
     override fun onResume() {
         super.onResume()
-        newsViewModel.view = this
+        favouritesViewModel.view = this
     }
 
     override fun onPause() {
         super.onPause()
-        newsViewModel.view = null
+        favouritesViewModel.view = null
     }
 
-    /*override fun showFavourites(news: ArrayList<Recipe>) {
-        TODO("Not yet implemented")
-    }*/
+    override fun showFavourites(news: ArrayList<Recipe>) {
+
+    }
 }
