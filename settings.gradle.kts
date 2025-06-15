@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FortUJI"
+rootProject.name = "RecipeApp"
 include(":app")
+ 
