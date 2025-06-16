@@ -28,9 +28,8 @@ class FavouritesViewModel : ViewModel(){
     private fun loadFavourites() {
         viewModelScope.launch {
             RecipesRepository.getFavourites()
-                .onSuccess { favourites ->
-                    // Pass the list to your view to display
-                    showFavourites(favourites)
+                .onSuccess {
+                    view?.apply{showFavourites(it)}
                 }
                 .onFailure {
                     view?.showError("Error loading news")
@@ -38,10 +37,6 @@ class FavouritesViewModel : ViewModel(){
         }
     }
 
-    fun showFavourites(recipes: List<RecipeResponse>) {
-        // assuming you have an adapter
-        adapter.submitList(recipes)
-    }
     fun updateView(){
 
     }

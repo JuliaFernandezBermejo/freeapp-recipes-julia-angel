@@ -4,7 +4,7 @@ import com.example.recipeapp.common.Recipe
 import com.example.recipeapp.network.RecipeResponse
 
 interface FavouritesView {
-    fun showFavourites(favourites: ArrayList<RecipeResponse>)
-    //fun showError (string: String)
+    fun showFavourites(favourites: List<RecipeResponse>)
+    fun showError (string: String)
 
 }

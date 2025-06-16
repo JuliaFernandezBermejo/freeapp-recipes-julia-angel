@@ -17,7 +17,6 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
     private val favouritesViewModel: FavouritesViewModel by viewModels()
     private lateinit var binding: ActivityFavouritesBinding
     private lateinit var adapter: FavouritesAdapter
-    lateinit var favourites : List<RecipeResponse>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +24,9 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
         binding = ActivityFavouritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = FavouritesAdapter(favourites)
+        /*adapter = FavouritesAdapter(favourites)
         binding.FavouritesRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.FavouritesRecyclerView.adapter = adapter
+        binding.FavouritesRecyclerView.adapter = adapter*/
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -46,7 +45,7 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
         favouritesViewModel.view = null
     }
 
-    override fun showFavourites(favourites: ArrayList<RecipeResponse>) {
+    override fun showFavourites(favourites: List<RecipeResponse>) {
         binding.FavouritesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@FavouritesActivity)
             adapter = FavouritesAdapter(favourites)
@@ -54,5 +53,9 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
             binding.FavouritesRecyclerView.adapter = adapter
 
         }
+    }
+
+    override fun showError(string: String) {
+        TODO("Not yet implemented")
     }
 }
