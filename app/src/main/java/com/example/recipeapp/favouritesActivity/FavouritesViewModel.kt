@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 class FavouritesViewModel : ViewModel(){
 
     init {
-        //loadFavourites()
+        loadFavourites()
     }
 
     var imageURL: String? = null
@@ -23,20 +23,20 @@ class FavouritesViewModel : ViewModel(){
             updateView()
         }
 
-    /*private fun loadFavourites() {
+    private fun loadFavourites() {
         viewModelScope.launch(Dispatchers.Main) {
             RecipesRepository.getFavourites()
                 .onSuccess {
                     imageURL = it.first
                     favourites.clear()
                     favourites.addAll(it.second)
-                    showNews()
+                    showFavourites()
                 }
                 .onFailure {
                     view?.showError("Error loading news")
                 }
         }
-    }*/
+    }
 
     fun showFavourites() =
         view?.apply{
