@@ -44,7 +44,7 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
         binding.FavouritesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@FavouritesActivity)
             adapter = FavouritesAdapter(favourites)
-            binding.FavouritesRecyclerView.layoutManager = LinearLayoutManager(this@FavoritesActivity)
+            binding.FavouritesRecyclerView.layoutManager = LinearLayoutManager(this@FavouritesActivity)
             binding.FavouritesRecyclerView.adapter = adapter
 
         }

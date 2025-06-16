@@ -14,7 +14,7 @@ class FavouritesViewModel : ViewModel(){
     }
 
     var imageURL: String? = null
-    val favourites = ArrayList<Recipe>()
+    var title : String? = null
     private val RecipesRepository= RecipesRepository()
 
     var view: FavouritesView? = null
@@ -27,9 +27,8 @@ class FavouritesViewModel : ViewModel(){
         viewModelScope.launch(Dispatchers.Main) {
             RecipesRepository.getFavourites()
                 .onSuccess {
-                    imageURL = it.first
-                    favourites.clear()
-                    favourites.addAll(it.second)
+                    imageURL = it.image
+                    title = it.name
                     showFavourites()
                 }
                 .onFailure {
