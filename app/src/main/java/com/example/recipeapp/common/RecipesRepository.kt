@@ -15,7 +15,7 @@ class RecipesRepository {
     init {
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         api = Retrofit.Builder()
-            .baseUrl("https://github.com/Ovi/DummyJSON/blob/master/database/recipes.json")
+            .baseUrl("https://github.com/Ovi/DummyJSON/blob/master/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(RecipesAPI::class.java)
@@ -24,12 +24,9 @@ class RecipesRepository {
     suspend fun getFavourites() =
         try {
             withContext(Dispatchers.IO) {
-                val favResponse = api.getFavourites()
-                val favourites = ArrayList<News>()
-                    for (dataResponse in favResponse.favlist) {
-                    news.add(News(motd.title, motd.tabTitle, motd.tileImage, motd.body))
-                }
-                Result.success(Pair(newsResponse.data.image, news))
+                val recipes = api.getRecipes()
+                val filteredRecipes = recipes.filter { it.id in setOf(1,3,4,7,8) }
+                Result.success(filteredRecipes)
             }
         } catch (e: Exception) {
             Result.failure(e)

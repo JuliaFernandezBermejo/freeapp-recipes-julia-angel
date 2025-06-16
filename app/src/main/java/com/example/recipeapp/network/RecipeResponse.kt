@@ -1,10 +1,15 @@
 package com.example.recipeapp.network
 
 class RecipeResponse (
-    /*val name: String,
+    val id: Int,
+    val name: String,
     val ingredients : Array<String>,
     val instructions : Array<String>,
-    val  prepTimeMinutes : ,
+    val prepTimeMinutes : Int,
+    val cookTimeMinutes : Int,
+    val servings : Int,
+    val difficulty: String,
+    val cuisine: String,
+    val image: String,
 
-    val image: String,*/
 )

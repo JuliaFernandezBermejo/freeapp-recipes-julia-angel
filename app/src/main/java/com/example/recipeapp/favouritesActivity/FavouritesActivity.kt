@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-//import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide
 import com.example.recipeapp.common.Recipe
 import com.example.recipeapp.databinding.ActivityFavouritesBinding
+import com.example.recipeapp.network.RecipeResponse
 
 class FavouritesActivity : AppCompatActivity(), FavouritesView {
 
@@ -39,7 +40,13 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
         favouritesViewModel.view = null
     }
 
-    override fun showFavourites(news: ArrayList<Recipe>) {
+    override fun showFavourites(favourites: ArrayList<RecipeResponse>) {
+        binding.FavouritesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@FavouritesActivity)
+            adapter = FavouritesAdapter(favourites)
+            binding.FavouritesRecyclerView.layoutManager = LinearLayoutManager(this@FavoritesActivity)
+            binding.FavouritesRecyclerView.adapter = adapter
 
+        }
     }
 }
