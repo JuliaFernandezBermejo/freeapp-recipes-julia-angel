@@ -56,6 +56,6 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
     }
 
     override fun showError(string: String) {
-        TODO("Not yet implemented")
+
     }
 }
