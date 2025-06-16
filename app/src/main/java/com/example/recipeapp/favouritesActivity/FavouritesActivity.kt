@@ -16,13 +16,19 @@ class FavouritesActivity : AppCompatActivity(), FavouritesView {
 
     private val favouritesViewModel: FavouritesViewModel by viewModels()
     private lateinit var binding: ActivityFavouritesBinding
-    var selectedFavourites: Recipe? = null
+    private lateinit var adapter: FavouritesAdapter
+    lateinit var favourites : List<RecipeResponse>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityFavouritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        adapter = FavouritesAdapter(favourites)
+        binding.FavouritesRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.FavouritesRecyclerView.adapter = adapter
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

@@ -8,22 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.databinding.ItemFavouritesBinding
 
-class FavouritesAdapter (private val favourites: List<RecipeResponse>) : RecyclerView.Adapter<FavouritesAdapter.RecipeViewHolder>() {
+class FavouritesAdapter (private val favourites: List<RecipeResponse>) : RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder>() {
 
-    class RecipeViewHolder(val binding: ItemFavouritesBinding) : RecyclerView.ViewHolder(binding.root)
+    class FavouritesViewHolder(val binding: ItemFavouritesBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
         val binding = ItemFavouritesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecipeViewHolder(binding)
+        return FavouritesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
         val recipe = favourites[position]
         holder.binding.textViewFavourites.text = recipe.name
         Glide.with(holder.binding.imageViewFavourites)
             .load(recipe.image)
+            //.circleCrop()
             .into(holder.binding.imageViewFavourites)
     }
 
-    override fun getItemCount() = favourites.size
+    override fun getItemCount(): Int = favourites.size
 }

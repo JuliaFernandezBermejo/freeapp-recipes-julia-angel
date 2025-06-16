@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.common.Recipe
 import com.example.recipeapp.common.RecipesRepository
+import com.example.recipeapp.network.RecipeResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -16,6 +17,7 @@ class FavouritesViewModel : ViewModel(){
     var imageURL: String? = null
     var title : String? = null
     private val RecipesRepository= RecipesRepository()
+    private lateinit var adapter: FavouritesAdapter
 
     var view: FavouritesView? = null
         set(value){
@@ -24,12 +26,11 @@ class FavouritesViewModel : ViewModel(){
         }
 
     private fun loadFavourites() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             RecipesRepository.getFavourites()
-                .onSuccess {
-                    imageURL = it.image
-                    title = it.name
-                    showFavourites()
+                .onSuccess { favourites ->
+                    // Pass the list to your view to display
+                    showFavourites(favourites)
                 }
                 .onFailure {
                     view?.showError("Error loading news")
@@ -37,11 +38,10 @@ class FavouritesViewModel : ViewModel(){
         }
     }
 
-    fun showFavourites() =
-        view?.apply{
-            //showImage(imageURL)
-            //showFavourites(favourites)
-        }
+    fun showFavourites(recipes: List<RecipeResponse>) {
+        // assuming you have an adapter
+        adapter.submitList(recipes)
+    }
     fun updateView(){
 
     }
