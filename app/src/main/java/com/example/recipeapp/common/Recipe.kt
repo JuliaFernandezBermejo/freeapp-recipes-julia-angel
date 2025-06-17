@@ -1,4 +1,6 @@
 package com.example.recipeapp.common
+import com.example.recipeapp.network.RecipeResponse
 
-class Recipe {
-}
+data class Recipe (
+    val recipes : List<RecipeResponse>
+)

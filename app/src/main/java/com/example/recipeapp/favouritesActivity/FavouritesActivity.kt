@@ -14,19 +14,15 @@ import com.example.recipeapp.network.RecipeResponse
 
 class FavouritesActivity : AppCompatActivity(), FavouritesView {
 
-    private val favouritesViewModel: FavouritesViewModel by viewModels()
+
     private lateinit var binding: ActivityFavouritesBinding
-    private lateinit var adapter: FavouritesAdapter
+    private val favouritesViewModel: FavouritesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityFavouritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        /*adapter = FavouritesAdapter(favourites)
-        binding.FavouritesRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.FavouritesRecyclerView.adapter = adapter*/
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

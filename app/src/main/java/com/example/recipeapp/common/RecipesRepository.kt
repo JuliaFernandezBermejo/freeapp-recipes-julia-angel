@@ -24,7 +24,7 @@ class RecipesRepository {
     suspend fun getFavourites() =
         try {
             withContext(Dispatchers.IO) {
-                val recipes = api.getRecipes()
+                val recipes = api.getRecipes().recipes
                 val filteredRecipes = recipes.filter { it.id in setOf(1,3,4,7,8) }
                 Result.success(filteredRecipes)
             }

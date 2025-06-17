@@ -10,6 +10,6 @@ class RecipeResponse (
     val servings : Int,
     val difficulty: String,
     val cuisine: String,
-    val image: String,
+    val image: String
 
 )

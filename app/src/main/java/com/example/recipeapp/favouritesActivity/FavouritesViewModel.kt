@@ -11,17 +11,15 @@ import kotlinx.coroutines.launch
 class FavouritesViewModel : ViewModel(){
 
     private val recipesRepository = RecipesRepository()
-
-    init {
-        loadFavourites()
-    }
-
     var view: FavouritesView? = null
         set(value){
             field = value
             updateView()
         }
 
+    init {
+        loadFavourites()
+    }
     private fun loadFavourites() {
         viewModelScope.launch {
             recipesRepository.getFavourites()
@@ -33,6 +31,7 @@ class FavouritesViewModel : ViewModel(){
                 }
         }
     }
+
 
     fun updateView(){
 
