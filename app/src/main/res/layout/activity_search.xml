@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,4 +19,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.145" />
+
+    <EditText
+        android:id="@+id/SearchContenttextView"
+        android:layout_width="218dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="48dp"
+        android:background="#A0D791"
+        android:backgroundTint="#9DC186"
+        android:backgroundTintMode="screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextSearch" />
+
+    <Spinner
+        android:id="@+id/searchTypeSpinner"
+        android:layout_width="113dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/SearchContenttextView"
+        app:layout_constraintStart_toEndOf="@+id/SearchContenttextView"
+        app:layout_constraintTop_toTopOf="@+id/SearchContenttextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/SearchRecyclerView"
+        android:layout_width="354dp"
+        android:layout_height="441dp"
+        android:layout_marginTop="16dp"
+        android:background="#D8F3C9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Searchbutton" />
+
+    <Button
+        android:id="@+id/Searchbutton"
+        android:layout_width="87dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="@+id/searchTypeSpinner"
+        app:layout_constraintStart_toStartOf="@+id/SearchContenttextView"
+        app:layout_constraintTop_toBottomOf="@+id/SearchContenttextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

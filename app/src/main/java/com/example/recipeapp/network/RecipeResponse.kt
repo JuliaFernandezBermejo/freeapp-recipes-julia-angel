@@ -1,6 +1,6 @@
 package com.example.recipeapp.network
 
-class RecipeResponse (
+data class RecipeResponse (
     val id: Int,
     val name: String,
     val ingredients : Array<String>,
