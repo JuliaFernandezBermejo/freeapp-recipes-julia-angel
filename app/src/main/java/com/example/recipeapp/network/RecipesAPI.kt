@@ -7,6 +7,6 @@ import retrofit2.http.Headers
 
 interface RecipesAPI {
     @Headers("Accept: application/json")
-    @GET("database/recipes.json")
+    @GET("recipes")
     suspend fun getRecipes(): List<RecipeResponse>
 }

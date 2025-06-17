@@ -15,7 +15,7 @@ class RecipesRepository {
     init {
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         api = Retrofit.Builder()
-            .baseUrl("https://github.com/Ovi/DummyJSON/blob/master/")
+            .baseUrl("https://dummyjson.com/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(RecipesAPI::class.java)
