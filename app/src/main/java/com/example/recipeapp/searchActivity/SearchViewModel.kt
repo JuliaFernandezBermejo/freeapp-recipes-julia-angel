@@ -7,6 +7,7 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel: ViewModel() {
 
+    private val searchRepository = SearchRepository()
     enum class SearchType(val label: String) {
         NAME("Name"), SERVINGS("Servings"), DIFFICULTY("Difficulty"), CUISINE("cuisine")
     }
@@ -20,10 +21,10 @@ class SearchViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val results = when (type) {
-                    SearchType.NAME -> SearchRepository.searchByName(query)
-                    SearchType.SERVINGS -> SearchRepository.searchByServings(query)
-                    SearchType.DIFFICULTY -> SearchRepository.searchByDifficulty(query)
-                    SearchType.CUISINE -> SearchRepository.searchByCuisine(query)
+                    SearchType.NAME -> searchRepository.searchByName(query)
+                    SearchType.SERVINGS -> searchRepository.searchByServings(query)
+                    SearchType.DIFFICULTY -> searchRepository.searchByDifficulty(query)
+                    SearchType.CUISINE -> searchRepository.searchByCuisine(query)
                 }
                 view?.showRecipes(results)
             } catch (e: Exception) {

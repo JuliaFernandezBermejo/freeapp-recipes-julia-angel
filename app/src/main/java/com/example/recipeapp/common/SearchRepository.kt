@@ -23,7 +23,58 @@ class SearchRepository {
 
     suspend fun searchByName(name: String): List<RecipeResponse> {
         val response = api.searchRecipesByName(name)
-        return response.data.map { data->
+        return response.recipes.map { data ->
+            RecipeResponse(
+                id = data.id ?: -1,
+                name = data.name ?: "Unknown",
+                ingredients = data.ingredients ?: arrayOf("unknown"),
+                instructions = data.instructions ?: arrayOf("unknown"),
+                prepTimeMinutes = data.prepTimeMinutes ?: -1,
+                cookTimeMinutes = data.cookTimeMinutes ?: -1,
+                servings = data.servings ?: -1,
+                difficulty = data.difficulty ?: "Unknown",
+                cuisine = data.cuisine ?: "Unknown",
+                image = data.image ?: "Unknown"
+            )
+        }
+    }
+    suspend fun searchByServings(name: String): List<RecipeResponse> {
+        val response = api.searchRecipesByServings(name)
+        return response.recipes.map { data->
+            RecipeResponse(
+                id = data.id ?: -1,
+                name = data.name ?: "Unknown",
+                ingredients = data.ingredients ?: arrayOf("unknown"),
+                instructions = data.instructions ?: arrayOf("unknown"),
+                prepTimeMinutes = data.prepTimeMinutes ?: -1,
+                cookTimeMinutes = data.cookTimeMinutes ?: -1,
+                servings = data.servings ?: -1,
+                difficulty = data.difficulty ?: "Unknown",
+                cuisine = data.cuisine ?: "Unknown",
+                image = data.image ?: "Unknown"
+            )
+        }
+    }
+    suspend fun searchByDifficulty(name: String): List<RecipeResponse> {
+        val response = api.searchRecipesByDifficulty(name)
+        return response.recipes.map { data->
+            RecipeResponse(
+                id = data.id ?: -1,
+                name = data.name ?: "Unknown",
+                ingredients = data.ingredients ?: arrayOf("unknown"),
+                instructions = data.instructions ?: arrayOf("unknown"),
+                prepTimeMinutes = data.prepTimeMinutes ?: -1,
+                cookTimeMinutes = data.cookTimeMinutes ?: -1,
+                servings = data.servings ?: -1,
+                difficulty = data.difficulty ?: "Unknown",
+                cuisine = data.cuisine ?: "Unknown",
+                image = data.image ?: "Unknown"
+            )
+        }
+    }
+    suspend fun searchByCuisine(name: String): List<RecipeResponse> {
+        val response = api.searchRecipesByCuisine(name)
+        return response.recipes.map { data->
             RecipeResponse(
                 id = data.id ?: -1,
                 name = data.name ?: "Unknown",

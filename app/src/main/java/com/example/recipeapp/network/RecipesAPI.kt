@@ -12,30 +12,30 @@ interface RecipesAPI {
     suspend fun getRecipes(): Recipe
 
     @Headers("Accept: application/json")
-    @GET("recipes/search/all")
+    @GET("recipes/search")
     suspend fun searchRecipesByName(
         @Query("name") name: String,
         @Query("matchMethod") matchMethod: String = "contains"
-    ): RecipeSearchResponse
+    ): Recipe
 
     @Headers("Accept: application/json")
-    @GET("recipes/search/all")
+    @GET("recipes/search")
     suspend fun searchRecipesByDifficulty(
         @Query("difficulty") difficulty: String,
         @Query("matchMethod") matchMethod: String = "contains"
-    ): RecipeSearchResponse
+    ): Recipe
 
     @Headers("Accept: application/json")
-    @GET("recipes/search/all")
-    suspend fun searchRecipesByCuisin(
-        @Query("cuisin") cuisin: String,
+    @GET("recipes/search")
+    suspend fun searchRecipesByCuisine(
+        @Query("cuisine") cuisine: String,
         @Query("matchMethod") matchMethod: String = "contains"
-    ): RecipeSearchResponse
+    ): Recipe
 
     @Headers("Accept: application/json")
-    @GET("recipes/search/all")
+    @GET("recipes/search")
     suspend fun searchRecipesByServings(
         @Query("servings") servings: String,
         @Query("matchMethod") matchMethod: String = "contains"
-    ): RecipeSearchResponse
+    ): Recipe
 }

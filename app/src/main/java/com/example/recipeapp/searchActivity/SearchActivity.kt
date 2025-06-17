@@ -47,7 +47,7 @@ class SearchActivity : AppCompatActivity(), SearchView {
 
         searchViewModel = SearchViewModel()
         searchViewModel.view = this
-
+        errorTextView = binding.errorTextView
         searchInput = binding.SearchContenttextView
         searchButton = binding.Searchbutton
         categorySpinner = binding.searchTypeSpinner
