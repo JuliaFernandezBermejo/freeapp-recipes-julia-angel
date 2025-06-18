@@ -9,7 +9,7 @@ class SearchViewModel: ViewModel() {
 
     private val searchRepository = SearchRepository()
     enum class SearchType(val label: String) {
-        NAME("Name"), SERVINGS("Servings"), DIFFICULTY("Difficulty"), CUISINE("cuisine")
+        TAG("tag"), MEAL("meal-type")
     }
     var view: SearchView? = null
         set(value){
@@ -21,10 +21,8 @@ class SearchViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val results = when (type) {
-                    SearchType.NAME -> searchRepository.searchByName(query)
-                    SearchType.SERVINGS -> searchRepository.searchByServings(query)
-                    SearchType.DIFFICULTY -> searchRepository.searchByDifficulty(query)
-                    SearchType.CUISINE -> searchRepository.searchByCuisine(query)
+                    SearchType.TAG -> searchRepository.searchByTag(query)
+                    SearchType.MEAL -> searchRepository.searchByMeal(query)
                 }
                 view?.showRecipes(results)
             } catch (e: Exception) {

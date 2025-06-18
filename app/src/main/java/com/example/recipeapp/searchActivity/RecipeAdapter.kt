@@ -24,8 +24,8 @@ class RecipeAdapter(private var items: List<RecipeResponse>) :
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val cosmetic = items[position]
-        holder.textViewRecipes.text = cosmetic.name
+        val recipe = items[position]
+        holder.textViewRecipes.text = recipe.name
     }
 
     fun updateData(newItems: List<RecipeResponse>) {

@@ -4,7 +4,7 @@ package com.example.recipeapp.network
 import com.example.recipeapp.common.Recipe
 import retrofit2.http.GET
 import retrofit2.http.Headers
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface RecipesAPI {
     @Headers("Accept: application/json")
@@ -12,30 +12,16 @@ interface RecipesAPI {
     suspend fun getRecipes(): Recipe
 
     @Headers("Accept: application/json")
-    @GET("recipes/search")
-    suspend fun searchRecipesByName(
-        @Query("name") name: String,
-        @Query("matchMethod") matchMethod: String = "contains"
+    @GET("recipes/tag/{tag}")
+    suspend fun searchRecipesTag(
+        @Path("tag") tag: String,
     ): Recipe
 
     @Headers("Accept: application/json")
-    @GET("recipes/search")
-    suspend fun searchRecipesByDifficulty(
-        @Query("difficulty") difficulty: String,
-        @Query("matchMethod") matchMethod: String = "contains"
+    @GET("recipes/meal-type/{meal-type}")
+    suspend fun searchRecipesByMeal(
+        @Path("meal-type") mealtype: String,
     ): Recipe
 
-    @Headers("Accept: application/json")
-    @GET("recipes/search")
-    suspend fun searchRecipesByCuisine(
-        @Query("cuisine") cuisine: String,
-        @Query("matchMethod") matchMethod: String = "contains"
-    ): Recipe
 
-    @Headers("Accept: application/json")
-    @GET("recipes/search")
-    suspend fun searchRecipesByServings(
-        @Query("servings") servings: String,
-        @Query("matchMethod") matchMethod: String = "contains"
-    ): Recipe
 }

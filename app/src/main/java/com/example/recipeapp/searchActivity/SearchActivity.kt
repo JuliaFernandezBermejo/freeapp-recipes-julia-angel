@@ -72,19 +72,12 @@ class SearchActivity : AppCompatActivity(), SearchView {
         }
 
     override fun showRecipes(recipes: List<RecipeResponse>) {
-        runOnUiThread {
-            errorTextView.visibility = View.GONE
-            recyclerView.visibility = View.VISIBLE
             adapter.updateData(recipes)
-        }
+
     }
 
     override fun showError(s: String) {
-        runOnUiThread {
-            recyclerView.visibility = View.GONE
-            errorTextView.visibility = View.VISIBLE
             errorTextView.text = s
-        }
     }
     override fun onResume() {
         super.onResume()
